@@ -3,7 +3,6 @@ let attempts = 0;
 
 document.getElementById("submitGuess").addEventListener("click", function () {
   const guess = Number(document.getElementById("guessInput").value);
-  attempts++;
 
   const feedback = document.getElementById("feedback");
   const attemptDisplay = document.getElementById("attempts");
@@ -14,6 +13,9 @@ document.getElementById("submitGuess").addEventListener("click", function () {
     return;
   }
 
+  attempts++; // Shows the number of attempts
+  attemptDisplay.textContent = `Attempts: ${attempts}`; // show attempts
+
   if (guess === secretNumber) {
     feedback.textContent = `🎉 Correct! You guessed it in ${attempts} attempts.`;
     document.getElementById("submitGuess").disabled = true;
@@ -22,6 +24,4 @@ document.getElementById("submitGuess").addEventListener("click", function () {
   } else {
     feedback.textContent = "Too high, go down! ⬇️";
   }
-
-  attemptsDisplay.textContent = `Attempts: ${attempts}`;
 });
